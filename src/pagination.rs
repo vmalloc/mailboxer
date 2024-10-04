@@ -9,7 +9,7 @@ pub struct Pagination {
 
 impl Pagination {
     pub fn get_page(&self) -> usize {
-        max(1, self.page.unwrap_or(1) as usize)
+        max(1, self.page.unwrap_or(1))
     }
 
     pub fn limit(&self) -> i64 {
