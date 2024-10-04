@@ -316,6 +316,11 @@ fn read_to_end_of_data(stream: &mut dyn BufRead) -> Result<String, Error> {
     }
 }
 
+fn load_tls_identity() -> Identity {
+    Identity::from_pkcs12(include_bytes!("../tls_identity.pfx"), "mailboxer")
+        .expect("Unable to load identity")
+}
+
 #[cfg(test)]
 mod tests {
 
@@ -364,9 +369,4 @@ mod tests {
             "some@email.com"
         );
     }
-}
-
-fn load_tls_identity() -> Identity {
-    Identity::from_pkcs12(include_bytes!("../tls_identity.pfx"), "mailboxer")
-        .expect("Unable to load identity")
 }
